@@ -1,0 +1,276 @@
+/* Fonts */
+@import '@fontsource/cormorant-garamond/400.css';
+@import '@fontsource/cormorant-garamond/400-italic.css';
+@import '@fontsource/cormorant-garamond/500.css';
+@import '@fontsource/cormorant-garamond/600.css';
+@import '@fontsource/cormorant-garamond/700.css';
+@import '@fontsource/jost/300.css';
+@import '@fontsource/jost/400.css';
+@import '@fontsource/jost/500.css';
+@import '@fontsource/jost/600.css';
+@import "tw-animate-css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================
+   Design Tokens
+   ===================================================== */
+:root {
+  /* Palette */
+  --color-ivory: #FDFBF7;
+  --color-blush: #F7EDF3;
+  --color-lavender: #EDE4F3;
+  --color-plum: #4A2545;
+  --color-gold: #C9A227;
+
+  /* Fluid Type Scale */
+  --fs-hero-om: clamp(3rem, 10vw, 7rem);
+  --fs-name: clamp(2.75rem, 8vw, 6rem);
+  --fs-name-sm: clamp(2rem, 5vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 4vw, 2.75rem);
+  --fs-h3: clamp(1.25rem, 2.5vw, 1.75rem);
+  --fs-body: clamp(0.95rem, 1.6vw, 1.125rem);
+  --fs-label: clamp(0.65rem, 1vw, 0.75rem);
+  --fs-countdown: clamp(2rem, 6vw, 4rem);
+
+  /* Spacing */
+  --section-py: clamp(4rem, 8vw, 8rem);
+
+  /* shadcn / radix tokens wired to palette */
+  --background: 40 25% 99%;
+  --foreground: 300 40% 21%;
+  --card: 40 25% 99%;
+  --card-foreground: 300 40% 21%;
+  --popover: 40 25% 99%;
+  --popover-foreground: 300 40% 21%;
+  --primary: 300 40% 21%;
+  --primary-foreground: 40 25% 99%;
+  --secondary: 300 30% 93%;
+  --secondary-foreground: 300 40% 21%;
+  --muted: 300 20% 95%;
+  --muted-foreground: 300 20% 50%;
+  --accent: 43 70% 47%;
+  --accent-foreground: 40 25% 99%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 40 25% 99%;
+  --border: 300 20% 88%;
+  --input: 300 20% 88%;
+  --ring: 43 70% 47%;
+  --radius: 0.5rem;
+}
+
+/* =====================================================
+   Base
+   ===================================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply font-sans;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-plum);
+    font-family: 'Jost', Inter, system-ui, sans-serif;
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    @apply bg-background text-foreground;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--color-plum);
+    line-height: 1.15;
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+  .theme {
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Jost', Inter, system-ui, sans-serif;
+  }
+  :root {
+    /* === Wedding Palette — overrides shadcn defaults === */
+    --background: #FDFBF7;
+    --foreground: #4A2545;
+    --card: #FDFBF7;
+    --card-foreground: #4A2545;
+    --popover: #FDFBF7;
+    --popover-foreground: #4A2545;
+    --primary: #4A2545;
+    --primary-foreground: #FDFBF7;
+    --secondary: #F7EDF3;
+    --secondary-foreground: #4A2545;
+    --muted: #EDE4F3;
+    --muted-foreground: #7a5577;
+    --accent: #C9A227;
+    --accent-foreground: #FDFBF7;
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: rgba(74, 37, 69, 0.15);
+    --input: rgba(74, 37, 69, 0.15);
+    --ring: #C9A227;
+    --radius: 0.25rem;
+  }
+  /* No dark mode */
+}
+
+/* =====================================================
+   Typography utilities
+   ===================================================== */
+@layer utilities {
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .font-sans-ui { font-family: 'Jost', Inter, system-ui, sans-serif; }
+
+  .text-ivory   { color: var(--color-ivory); }
+  .text-blush   { color: var(--color-blush); }
+  .text-lavender { color: var(--color-lavender); }
+  .text-plum    { color: var(--color-plum); }
+  .text-gold    { color: var(--color-gold); }
+
+  .bg-ivory     { background-color: var(--color-ivory); }
+  .bg-blush     { background-color: var(--color-blush); }
+  .bg-lavender  { background-color: var(--color-lavender); }
+  .bg-plum      { background-color: var(--color-plum); }
+  .bg-gold      { background-color: var(--color-gold); }
+
+  .border-gold  { border-color: var(--color-gold); }
+  .border-plum  { border-color: var(--color-plum); }
+
+  /* Section label style */
+  .section-label {
+    font-family: 'Jost', Inter, sans-serif;
+    font-size: var(--fs-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    font-weight: 500;
+  }
+
+  /* Hairline divider */
+  .hairline {
+    border: none;
+    border-top: 1px solid var(--color-gold);
+    opacity: 0.4;
+  }
+
+  /* Hero name */
+  .text-hero-name {
+    font-size: var(--fs-name);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--color-plum);
+  }
+
+  /* Countdown number */
+  .text-countdown {
+    font-size: var(--fs-countdown);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    color: var(--color-plum);
+    line-height: 1;
+  }
+
+  /* Gold OM */
+  .text-om {
+    font-size: var(--fs-hero-om);
+    color: var(--color-gold);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  /* Section heading */
+  .text-section-h2 {
+    font-size: var(--fs-h2);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    color: var(--color-plum);
+  }
+}
+
+/* =====================================================
+   Animations
+   ===================================================== */
+@layer utilities {
+  .reveal-hidden {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-hidden {
+      opacity: 0;
+      transform: none;
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.5s ease-out;
+    }
+  }
+}
+
+/* =====================================================
+   Hover states — fine pointer devices only
+   ===================================================== */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(74, 37, 69, 0.12);
+  }
+
+  .hover-underline-grow {
+    position: relative;
+  }
+  .hover-underline-grow::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.3s ease;
+  }
+  .hover-underline-grow:hover::after {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   Landscape phone
+   ===================================================== */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-landscape {
+    min-height: 100svh;
+    font-size: 0.85em;
+  }
+}
+
+/* =====================================================
+   4K cap
+   ===================================================== */
+@media (min-width: 1920px) {
+  body {
+    font-size: clamp(1.125rem, 1.2vw, 1.25rem);
+  }
+}
