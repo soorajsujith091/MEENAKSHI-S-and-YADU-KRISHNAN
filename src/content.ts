@@ -10,7 +10,7 @@ export const content = {
   meta: {
     title: 'Meenakshi & Yadu Krishna — Wedding Invitation · 22.11.2026',
     description:
-      'Join us to celebrate the wedding of Meenakshi S and Yadu Krishnan on 22nd November 2026 at Yatir Auditorium, Thiruvalla, Kerala.',
+      'Join us to celebrate the wedding of Meenakshi S and Yadu Krishnan on 22nd November 2026 at Yahir Auditorium, Thiruvalla, Kerala.',
     ogImage: '/hero.jpg',
     url: 'https://meenakshi-yadu.wedding',
   },
@@ -25,7 +25,7 @@ export const content = {
     location: 'Thiruvalla, Kerala',
     scrollCue: 'Scroll',
     heroImage: '/hero.jpg',
-    heroImageAlt: 'Radha Krishna painting — artwork for Meenakshi & Yadu wedding',
+    heroImageAlt: 'Meenakshi & Yadu Krishna — Wedding',
   },
 
   invitation: {
@@ -81,11 +81,11 @@ export const content = {
         badge: 'Main Event',
         dayLabel: 'Sunday, 22 November 2026',
         hindiDate: '1202 Vrischikam 6',
-        venue: 'Yatir Auditorium',
-        venueAddress: 'T.K. Road, Vallamkulam East, Thiruvalla',
+        venue: 'Yahir Auditorium',
+        venueAddress: 'TK Road, Vallamkulam East, Eraviperoor, Thiruvalla, Kerala – 689541',
         time: 'Muhurtham: 12:05 PM – 12:25 PM',
         busTime: 'Bus departs: 11:00 AM',
-        address: 'T.K. Road, Vallamkulam East, Thiruvalla, Kerala',
+        address: 'TK Road, Vallamkulam East, Eraviperoor, Thiruvalla, Kerala – 689541',
         calendarStart: '20261122T120500',
         calendarEnd: '20261122T122500',
         calendarTimezone: 'Asia/Kolkata',
@@ -111,13 +111,14 @@ export const content = {
     sectionLabel: 'Venue',
     heading: 'Find Us Here',
     primary: {
-      name: 'Yatir Auditorium',
-      address: 'T.K. Road, Vallamkulam East, Thiruvalla, Kerala',
+      name: 'Yahir Auditorium',
+      address: 'TK Road, Vallamkulam East, Eraviperoor, Thiruvalla, Kerala – 689541',
+      image: '/yahir-auditorium.jpg',
+      imageAlt: 'Yahir Auditorium — wedding venue in Thiruvalla, Kerala',
       mapSrc:
-        // TODO: Replace with actual Google Maps embed URL
-        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.0!2d76.5!3d9.38!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjInNDguMCJOIDc2wrAzMCcwMC4wIkU!5e0!3m2!1sen!2sin!4v1234567890',
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.0!2d76.62745!3d9.3816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjInNTMuOCJOIDc2wrAzNyczMC44IkU!5e0!3m2!1sen!2sin!4v1234567890',
       mapsUrl:
-        'https://maps.google.com/?q=Yatir+Auditorium+TK+Road+Thiruvalla+Kerala',
+        'https://maps.google.com/?q=Yahir+Auditorium+Thiruvalla+Kerala',
       label: 'Open in Maps',
     },
     secondary: {
@@ -174,7 +175,7 @@ export const content = {
     rsvp: { label: 'RSVP', href: '#rsvp' },
     directions: {
       label: 'Directions',
-      href: 'https://maps.google.com/?q=Yatir+Auditorium+TK+Road+Thiruvalla+Kerala',
+      href: 'https://maps.google.com/?q=Yahir+Auditorium+Thiruvalla+Kerala',
     },
     call: { label: 'Call', href: 'tel:8078443579' },
   },

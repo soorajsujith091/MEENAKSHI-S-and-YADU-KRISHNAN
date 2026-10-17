@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Toaster } from '@/components/ui/sonner';
 import { Nav } from '@/components/layout/Nav';
 import { MobileActionBar } from '@/components/layout/MobileActionBar';
+import { MusicPlayer } from '@/components/layout/MusicPlayer';
 import { Hero } from '@/components/sections/Hero';
 import { Invitation } from '@/components/sections/Invitation';
 import { Countdown } from '@/components/sections/Countdown';
@@ -18,9 +20,13 @@ import { EntryOverlay } from '@/components/layout/EntryOverlay';
  * Section order: Hero → Invitation → Countdown → Events → Gallery → Venue → Contact → RSVP → Footer
  */
 function App() {
+  const [musicStarted, setMusicStarted] = useState(false);
+
   return (
     <>
-      <EntryOverlay />
+      <EntryOverlay onOpen={() => setMusicStarted(true)} />
+      {/* Background music — starts when invitation is opened */}
+      <MusicPlayer shouldPlay={musicStarted} />
       {/* Skip to main content — keyboard accessibility */}
       <a
         href="#invitation"

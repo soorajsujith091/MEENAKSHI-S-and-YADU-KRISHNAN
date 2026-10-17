@@ -1,14 +1,13 @@
 import { content } from '@/content';
-import { Reveal } from '@/components/layout/Reveal';
+import ScrollExpandMedia from '@/components/ui/scroll-expansion-hero';
+import { ChevronDown, Sparkles } from 'lucide-react';
 
 /**
- * Hero — Full-viewport hero section with Radha–Krishna artwork,
- * ivory scrim overlay, and responsive layout.
+ * Hero — Interactive scroll-expanding hero section.
  *
- * Mobile: single column, 100svh, text centered.
- * Tablet: wider aspect artwork, names lower with more air.
- * Desktop (lg+): artwork panel left (55%), names right (45%), vertically centered.
- *                Artwork capped — never fills 1920px, ivory bg breathes.
+ * Expands the central wedding portrait on scroll/wheel/touch gesture,
+ * separating the bride & groom typography and unfolding the invitation details.
+ * Optimized for mobile, desktop, user accessibility, and SEO.
  */
 export function Hero() {
   const { hero } = content;
@@ -16,132 +15,58 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[100svh] hero-landscape overflow-hidden bg-[#FDFBF7] flex flex-col lg:flex-row"
-      aria-label="Wedding hero"
+      className="relative w-full overflow-hidden bg-[#120B10]"
+      aria-label={`${hero.bride} and ${hero.groom} Wedding Invitation Hero`}
     >
-      {/* ── Artwork panel ── */}
-      <div
-        className={[
-          // Mobile: top, full width, fixed height
-          'relative w-full h-[75vw] min-h-[350px] max-h-[500px]',
-          // Tablet: slightly taller
-          'sm:h-[70vw] sm:max-h-[600px]',
-          // Desktop: left column, constrained height
-          'lg:w-[55%] lg:h-auto lg:max-h-none lg:min-h-[100svh] lg:max-w-[900px]',
-        ].join(' ')}
+      <ScrollExpandMedia
+        mediaType="image"
+        mediaSrc={hero.heroImage || '/hero.jpg'}
+        bgImageSrc="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80"
+        firstPart="Meenakshi S"
+        secondPart="& Yadu Krishnan"
+        title="Meenakshi S & Yadu Krishnan"
+        date={hero.date}
+        scrollToExpand="Scroll to Unfold Our Story"
+        scrollCueText="CONTINUE TO INVITATION"
+        showScrollCue={true}
+        titleClassName="font-display text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#FDFBF7] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] tracking-wide"
+        dateClassName="font-sans-ui text-xl md:text-2xl tracking-[0.25em] text-[#E5C158] font-medium drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+        hintClassName="font-sans-ui text-xs sm:text-sm text-[#FDFBF7]/90 font-light tracking-[0.2em] uppercase mt-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+        textBlend={false}
       >
-        <img
-          src={hero.heroImage}
-          alt={hero.heroImageAlt}
-          width={900}
-          height={1200}
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover object-top"
-          onError={(e) => {
-            // Fallback gracefully if hero.jpg not present
-            (e.target as HTMLImageElement).style.display = 'none';
-          }}
-        />
-        {/* Soft ivory scrim — bottom fade on mobile, right fade on desktop */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'linear-gradient(to bottom, rgba(253,251,247,0) 60%, rgba(253,251,247,0.85) 90%, rgba(253,251,247,1) 100%)',
-          }}
-          aria-hidden="true"
-        />
-        {/* Desktop: right-side fade */}
-        <div
-          className="absolute inset-0 pointer-events-none hidden lg:block"
-          style={{
-            background:
-              'linear-gradient(to right, rgba(253,251,247,0) 60%, rgba(253,251,247,0.95) 100%)',
-          }}
-          aria-hidden="true"
-        />
-      </div>
+        {/* Unfolded content revealed when media expansion reaches 100% */}
+        <div className="max-w-3xl mx-auto text-center flex flex-col items-center justify-center py-8 px-4 text-[#FDFBF7]">
+          <div className="flex items-center gap-2 text-[#C9A227] mb-2">
+            <Sparkles className="w-5 h-5 animate-pulse" />
+            <span className="font-display text-3xl">ॐ</span>
+            <Sparkles className="w-5 h-5 animate-pulse" />
+          </div>
 
-      {/* ── Text panel ── */}
-      <div
-        className={[
-          // Mobile: below artwork, centered
-          'flex flex-col items-center justify-center text-center',
-          'px-5 pb-20 pt-6',
-          // Tablet
-          'sm:px-8 sm:pb-24 sm:pt-8',
-          // Desktop: right column, vertically centered
-          'lg:flex-1 lg:items-start lg:text-left',
-          'lg:justify-center lg:px-12 lg:py-24',
-        ].join(' ')}
-      >
-        {/* Tagline */}
-        <Reveal delay={80}>
-          <p className="section-label mb-6">{hero.tagline}</p>
-        </Reveal>
-
-        {/* Bride name */}
-        <Reveal delay={160}>
-          <h1 className="text-hero-name font-display" lang="en">
-            {hero.bride}
-          </h1>
-        </Reveal>
-
-        {/* "with" connector */}
-        <Reveal delay={220}>
-          <p className="font-display italic text-[clamp(1.1rem,3vw,1.5rem)] text-[#C9A227] my-2">
-            {hero.with}
+          <p className="font-sans-ui uppercase tracking-[0.25em] text-xs text-[#E5C158] mb-3">
+            {hero.tagline}
           </p>
-        </Reveal>
 
-        {/* Groom name */}
-        <Reveal delay={300}>
-          <p className="text-hero-name font-display" lang="en">
-            {hero.groom}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-medium text-[#FDFBF7] tracking-tight mb-3">
+            {hero.bride} <span className="font-display italic text-[#C9A227]">with</span> {hero.groom}
+          </h2>
+
+          <div className="w-20 h-[1px] bg-[#C9A227]/70 my-3 mx-auto" aria-hidden="true" />
+
+          <p className="font-sans-ui text-base sm:text-lg tracking-widest text-[#FDFBF7]/90 mb-1">
+            {hero.date}
           </p>
-        </Reveal>
-
-        {/* Hairline */}
-        <Reveal delay={380}>
-          <div className="hairline w-24 mx-auto lg:mx-0 my-6" aria-hidden="true" />
-        </Reveal>
-
-        {/* Date */}
-        {hero.date?.trim() && (
-          <Reveal delay={420}>
-            <p className="font-sans-ui text-[clamp(1.1rem,3vw,1.75rem)] font-light tracking-[0.18em] text-[#4A2545]">
-              {hero.date}
-            </p>
-          </Reveal>
-        )}
-
-        {/* Location */}
-        <Reveal delay={460}>
-          <p className="font-sans-ui text-[clamp(0.75rem,1.4vw,0.9rem)] uppercase tracking-widest text-[#C9A227] mt-2">
+          <p className="font-sans-ui text-xs sm:text-sm uppercase tracking-[0.2em] text-[#E5C158]">
             {hero.location}
           </p>
-        </Reveal>
 
-        {/* Scroll cue */}
-        <Reveal delay={600}>
-          <div className="mt-10 flex flex-col items-center lg:items-start gap-2 opacity-60">
-            <p className="section-label">{hero.scrollCue}</p>
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              className="text-[#C9A227] animate-bounce"
-              aria-hidden="true"
-            >
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
+          <div className="mt-8 flex flex-col items-center gap-1.5 opacity-80 hover:opacity-100 transition-opacity">
+            <span className="font-sans-ui text-[11px] uppercase tracking-[0.22em] text-[#FDFBF7]/80">
+              Continue to Invitation
+            </span>
+            <ChevronDown className="w-5 h-5 text-[#C9A227] animate-bounce" aria-hidden="true" />
           </div>
-        </Reveal>
-      </div>
+        </div>
+      </ScrollExpandMedia>
     </section>
   );
 }

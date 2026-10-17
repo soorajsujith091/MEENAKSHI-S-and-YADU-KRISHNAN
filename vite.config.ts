@@ -8,6 +8,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(import.meta.dirname, './src'),
+      'next/image': resolve(import.meta.dirname, './src/components/ui/next-image-shim.tsx'),
     },
+  },
+  define: {
+    'process.env': {},
+    process: { env: {} },
   },
 })

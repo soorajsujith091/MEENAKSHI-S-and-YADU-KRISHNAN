@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { content } from '@/content';
 
-export function EntryOverlay() {
+export function EntryOverlay({ onOpen }: { onOpen?: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isUnmounted, setIsUnmounted] = useState(false);
   const { hero } = content;
@@ -92,7 +92,7 @@ export function EntryOverlay() {
 
         {/* Center Seal */}
         <button
-          onClick={() => setIsOpen(true)}
+          onClick={() => { setIsOpen(true); onOpen?.(); }}
           className={cn(
             'relative flex flex-col items-center justify-center rounded-full transition-transform hover:scale-105 active:scale-95 group',
             'w-24 h-24 md:w-28 md:h-28 mb-6',
@@ -112,7 +112,7 @@ export function EntryOverlay() {
 
         {/* Open Invitation Text */}
         <button 
-          onClick={() => setIsOpen(true)}
+          onClick={() => { setIsOpen(true); onOpen?.(); }}
           className="flex flex-col items-center gap-2 text-[#4A2545] hover:text-[#C9A227] transition-colors group cursor-pointer"
         >
           <span className="font-sans-ui text-xs md:text-sm tracking-[0.2em] uppercase font-medium">
